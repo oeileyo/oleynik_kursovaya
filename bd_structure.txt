@@ -1,0 +1,21 @@
+User:
+id
+*status (admin/)
+login
+password
+
+
+Employee:
+id
+
+
+
+Schedule:
+
+
+
+User
+Employee
+Employee schedule
+*Salon
+Appointment
