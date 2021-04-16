@@ -17,10 +17,15 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String type; /////////////////////////////////////
-
     private Date date_time;
     private Boolean status; // available/unavailable
+
+    @ManyToOne (optional = true, cascade = CascadeType.ALL)
+    @JoinColumn (name = "category_id")
+    @JsonIgnore
+    private Category category;
+    @Column(insertable = false, updatable = false)
+    private Long category_id;
 
     @ManyToOne (optional = false, cascade = CascadeType.ALL)
     @JoinColumn (name = "employee_id")

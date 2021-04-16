@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,9 +23,8 @@ public class Employee {
     @OneToMany (mappedBy="employee", cascade = CascadeType.ALL)
     private List<Appointment> appointmentList;
 
-    @ManyToMany
-    @JoinTable (name="employee_category",
-            joinColumns=@JoinColumn (name="employee_id"),
-            inverseJoinColumns=@JoinColumn(name="category_id"))
+    @ManyToMany(mappedBy = "employeeList", cascade = CascadeType.PERSIST)
+    @JsonIgnore
     private List<Category> categoryList;
+
 }

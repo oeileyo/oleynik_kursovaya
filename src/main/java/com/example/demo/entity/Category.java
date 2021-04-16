@@ -15,10 +15,14 @@ public class Category {
     private Long id;
 
     private String name;
+    private Integer price;
 
     @ManyToMany
     @JoinTable (name="employee_category",
-            joinColumns=@JoinColumn (name="categoty_id"),
+            joinColumns=@JoinColumn (name="category_id"),
             inverseJoinColumns=@JoinColumn(name="employee_id"))
     private List<Employee> employeeList;
+
+    @OneToMany (mappedBy="category", cascade = CascadeType.PERSIST)
+    private List<Appointment> appointmentList;
 }
