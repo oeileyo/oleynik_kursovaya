@@ -25,4 +25,5 @@ public class Category {
 
     @OneToMany (mappedBy="category", cascade = CascadeType.PERSIST)
     private List<Appointment> appointmentList;
+
 }
