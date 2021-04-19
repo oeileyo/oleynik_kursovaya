@@ -11,5 +11,16 @@ import java.util.List;
 
 @Service
 public class UserService {
+    @Autowired
+    private UserRepository userRepository;
+
+    public Boolean checkPW(User user){
+        var user_ = userRepository.findByLogin(user.getLogin());
+        if (user.getPassword() == user_.getPassword()){
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
