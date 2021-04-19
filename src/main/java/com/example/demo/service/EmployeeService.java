@@ -24,17 +24,15 @@ public class EmployeeService {
 
       if (updatedEmployee.isPresent()) {
           var _updatedEmployee = updatedEmployee.get();
-          _updatedEmployee.setCategoryList(employee.getCategoryList() != null ?
-                  employee.getCategoryList() : _updatedEmployee.getCategoryList());
 
-          _updatedEmployee.setFirst_name(employee.getFirst_name() != null ?
-                  employee.getFirst_name() : _updatedEmployee.getFirst_name());
+          _updatedEmployee.setFirst_name(employee.getFirst_name() != null
+                  ? employee.getFirst_name() : _updatedEmployee.getFirst_name());
 
-          _updatedEmployee.setLast_name(employee.getLast_name() != null ?
-                  employee.getLast_name() : _updatedEmployee.getLast_name());
+          _updatedEmployee.setLast_name(employee.getLast_name() != null
+                  ? employee.getLast_name() : _updatedEmployee.getLast_name());
 
-          _updatedEmployee.setAppointmentList(employee.getAppointmentList() != null ?
-                  employee.getAppointmentList() : _updatedEmployee.getAppointmentList());
+          _updatedEmployee.setAppointmentList(employee.getAppointmentList() != null
+                  ? employee.getAppointmentList() : _updatedEmployee.getAppointmentList());
 
           employeeRepository.save(_updatedEmployee);
       }

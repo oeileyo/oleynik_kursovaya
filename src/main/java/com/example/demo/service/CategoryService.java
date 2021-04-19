@@ -17,8 +17,25 @@ public class CategoryService {
         categoryRepository.save(category);
     }
 
-    public void add_employee(Category category, Employee employee) {
-        category.getEmployeeList().add(employee);
+    public List<Category> update(Category category) {
+        var updatedCategory = categoryRepository.findById(category.getId());
+
+        if (updatedCategory.isPresent()) {
+            var _updatedCategory = updatedCategory.get();
+
+            _updatedCategory.setName(category.getName() != null
+                    ? category.getName() : _updatedCategory.getName());
+
+            _updatedCategory.setPrice(category.getPrice() != null
+                    ? category.getPrice() : _updatedCategory.getPrice());
+
+            _updatedCategory.setAppointmentList(category.getAppointmentList() != null
+                    ? category.getAppointmentList() : _updatedCategory.getAppointmentList());
+
+            categoryRepository.save(_updatedCategory);
+        }
+
+        return categoryRepository.findAll();
     }
 
     public List<Category> findAll(){

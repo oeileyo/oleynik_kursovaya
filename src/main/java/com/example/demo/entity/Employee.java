@@ -23,10 +23,6 @@ public class Employee {
     @OneToMany (mappedBy="employee", cascade = CascadeType.ALL)
     private List<Appointment> appointmentList;
 
-    @ManyToMany(mappedBy = "employeeList", cascade = CascadeType.PERSIST)
-    @JsonIgnore
-    private List<Category> categoryList;
-
 
     public String getFirst_name() {
         return first_name;
@@ -40,9 +36,6 @@ public class Employee {
         return appointmentList;
     }
 
-    public List<Category> getCategoryList() {
-        return categoryList;
-    }
 
     public void setFirst_name(String first_name) {
         this.first_name = first_name;
@@ -56,7 +49,4 @@ public class Employee {
         this.appointmentList = appointmentList;
     }
 
-    public void setCategoryList(List<Category> categoryList) {
-        this.categoryList = categoryList;
-    }
 }
