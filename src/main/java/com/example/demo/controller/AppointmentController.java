@@ -24,6 +24,13 @@ public class AppointmentController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @PutMapping("/appointment/update")
+    public ResponseEntity<List<Appointment>> update(@RequestBody Appointment appointment) {
+        final List<Appointment> appointmentList = appointmentService.update(appointment);
+
+        return new ResponseEntity<>(appointmentList, HttpStatus.OK);
+    }
+
     @GetMapping(value = "/appointment")
     public ResponseEntity<List<Appointment>> findAll(){
         final List<Appointment> appointmentList = appointmentService.findAll();

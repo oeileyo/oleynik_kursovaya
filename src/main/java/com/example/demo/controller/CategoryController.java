@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Appointment;
 import com.example.demo.entity.Category;
+import com.example.demo.entity.Employee;
 import com.example.demo.service.AppointmentService;
 import com.example.demo.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,13 @@ public class CategoryController {
     public ResponseEntity<?> create(@RequestBody Category category){
         categoryService.create(category);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PutMapping("/category/update")
+    public ResponseEntity<List<Category>> update(@RequestBody Category category) {
+        final List<Category> categoryList = categoryService.update(category);
+
+        return new ResponseEntity<>(categoryList, HttpStatus.OK);
     }
 
     @GetMapping(value = "/category")

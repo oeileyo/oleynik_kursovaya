@@ -18,11 +18,11 @@ public class Employee {
 
     private String first_name;
     private String last_name;
-//    private Boolean is_active; // работает ли
 
     @OneToMany (mappedBy="employee", cascade = CascadeType.ALL)
     private List<Appointment> appointmentList;
 
+    public Long getId() {return id;};
 
     public String getFirst_name() {
         return first_name;
@@ -35,7 +35,6 @@ public class Employee {
     public List<Appointment> getAppointmentList() {
         return appointmentList;
     }
-
 
     public void setFirst_name(String first_name) {
         this.first_name = first_name;

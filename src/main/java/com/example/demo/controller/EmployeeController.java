@@ -18,21 +18,20 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @PostMapping("/employee")
+    @PostMapping("/employees")
     public ResponseEntity<?> create(@RequestBody Employee employee){
         employeeService.create(employee);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping("/employee/update")
-    public ResponseEntity<List<Employee>> updateCar(@RequestBody Employee employee) {
+    @PutMapping("/employees/{id}")
+    public ResponseEntity<List<Employee>> update(@RequestBody Employee employee) {
         final List<Employee> employeeList = employeeService.update(employee);
 
         return new ResponseEntity<>(employeeList, HttpStatus.OK);
     }
 
-
-    @GetMapping(value = "/employee")
+    @GetMapping(value = "/employees")
     public ResponseEntity<List<Employee>> findAll(){
         final List<Employee> employeeList = employeeService.findAll();
 
@@ -41,7 +40,7 @@ public class EmployeeController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(value = "/employee/{id}")
+    @GetMapping(value = "/employees/{id}")
     public ResponseEntity<Employee> find(@PathVariable(name="id") Long id){
         final Employee employee = employeeService.find(id);
 
@@ -50,7 +49,7 @@ public class EmployeeController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping(value = "/employee")
+    @DeleteMapping(value = "/employees/{id}")
     public ResponseEntity<?> deleteById(@PathVariable(name="id") Long id){
         employeeService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
