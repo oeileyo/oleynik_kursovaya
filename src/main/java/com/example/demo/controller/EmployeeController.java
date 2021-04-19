@@ -25,12 +25,11 @@ public class EmployeeController {
     }
 
     @PutMapping("/employee/update")
-    public ResponseEntity<List<Employee>> updateCar(@RequestBody Employee employee) {
+    public ResponseEntity<List<Employee>> update(@RequestBody Employee employee) {
         final List<Employee> employeeList = employeeService.update(employee);
 
         return new ResponseEntity<>(employeeList, HttpStatus.OK);
     }
-
 
     @GetMapping(value = "/employee")
     public ResponseEntity<List<Employee>> findAll(){
