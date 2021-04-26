@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AppointmentService {
@@ -48,9 +49,7 @@ public class AppointmentService {
         return appointmentRepository.findAll();
     }
 
-    public Appointment find(Long id){
-        return appointmentRepository.getOne(id);
-    }
+    public Optional<Appointment> find(Long id){ return appointmentRepository.findById(id); }
 
     public void delete(Long id){ appointmentRepository.deleteById(id); }
 }

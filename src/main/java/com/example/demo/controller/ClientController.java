@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ClientController {
@@ -36,8 +37,8 @@ public class ClientController {
     }
 
     @GetMapping(value = "/client/{id}")
-    public ResponseEntity<Client> find(@PathVariable(name="id") Long id){
-        final Client client = clientService.find(id);
+    public ResponseEntity<Optional<Client>> find(@PathVariable(name="id") Long id){
+        final Optional<Client> client = clientService.find(id);
 
         return client != null
                 ? new ResponseEntity<>(client, HttpStatus.OK)

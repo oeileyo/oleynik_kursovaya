@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class EmployeeController {
@@ -41,8 +42,8 @@ public class EmployeeController {
     }
 
     @GetMapping(value = "/employees/{id}")
-    public ResponseEntity<Employee> find(@PathVariable(name="id") Long id){
-        final Employee employee = employeeService.find(id);
+    public ResponseEntity<Optional<Employee>> find(@PathVariable(name="id") Long id){
+        final Optional<Employee> employee = employeeService.find(id);
 
         return employee != null
                 ? new ResponseEntity<>(employee, HttpStatus.OK)

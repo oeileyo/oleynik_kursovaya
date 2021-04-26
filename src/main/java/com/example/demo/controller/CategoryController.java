@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class CategoryController {
@@ -44,15 +45,15 @@ public class CategoryController {
     }
 
     @GetMapping(value = "/category/{id}")
-    public ResponseEntity<Category> find(@PathVariable(name="id") Long id){
-        final Category category = categoryService.find(id);
+    public ResponseEntity<Optional<Category>> find(@PathVariable(name="id") Long id){
+        final Optional<Category> category = categoryService.find(id);
 
-        return category != null
+        return category.isPresent()
                 ? new ResponseEntity<>(category, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping(value = "/category")
+    @DeleteMapping(value = "/category/{id}")
     public ResponseEntity<?> deleteById(@PathVariable(name="id") Long id){
         categoryService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
