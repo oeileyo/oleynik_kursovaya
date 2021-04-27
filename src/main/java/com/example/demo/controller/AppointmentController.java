@@ -25,7 +25,7 @@ public class AppointmentController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping("/appointment/update")
+    @PutMapping("/appointment/{id}")
     public ResponseEntity<List<Appointment>> update(@RequestBody Appointment appointment) {
         final List<Appointment> appointmentList = appointmentService.update(appointment);
 

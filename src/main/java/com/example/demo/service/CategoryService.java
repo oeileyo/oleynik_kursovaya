@@ -30,8 +30,8 @@ public class CategoryService {
             _updatedCategory.setPrice(category.getPrice() != null
                     ? category.getPrice() : _updatedCategory.getPrice());
 
-            _updatedCategory.setAppointmentList(category.getAppointmentList() != null
-                    ? category.getAppointmentList() : _updatedCategory.getAppointmentList());
+//            _updatedCategory.setAppointmentList(category.getAppointmentList() != null
+//                    ? category.getAppointmentList() : _updatedCategory.getAppointmentList());
 
             categoryRepository.save(_updatedCategory);
         }

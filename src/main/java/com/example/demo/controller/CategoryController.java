@@ -28,7 +28,7 @@ public class CategoryController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping("/category/update")
+    @PutMapping("/category/{id}")
     public ResponseEntity<List<Category>> update(@RequestBody Category category) {
         final List<Category> categoryList = categoryService.update(category);
 
