@@ -20,6 +20,7 @@ public class Employee {
     private String last_name;
 
     @OneToMany (mappedBy="employee", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Appointment> appointmentList;
 
     public Long getId() {return id;};

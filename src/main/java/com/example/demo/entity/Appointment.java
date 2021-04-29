@@ -27,7 +27,7 @@ public class Appointment {
     @Column(insertable = false, updatable = false)
     private Long category_id;
 
-    @ManyToOne (optional = false, cascade = CascadeType.ALL)
+    @ManyToOne (optional = true, cascade = CascadeType.ALL)
     @JoinColumn (name = "employee_id")
     @JsonIgnore
     private Employee employee;
