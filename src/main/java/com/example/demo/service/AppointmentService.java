@@ -24,8 +24,11 @@ public class AppointmentService {
         if (updatedAppointment.isPresent()) {
             var _updatedAppointment = updatedAppointment.get();
 
-            _updatedAppointment.setDate_time(appointment.getDate_time() != null
-                    ? appointment.getDate_time() : _updatedAppointment.getDate_time());
+            _updatedAppointment.setDate(appointment.getDate() != null
+                    ? appointment.getDate() : _updatedAppointment.getDate());
+
+            _updatedAppointment.setTime(appointment.getTime() != null
+                    ? appointment.getTime() : _updatedAppointment.getTime());
 
             _updatedAppointment.setCategory(appointment.getCategory() != null
                     ? appointment.getCategory() : _updatedAppointment.getCategory());

@@ -4,9 +4,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -17,7 +16,8 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date date_time;
+    private String date;
+    private String time;
     private Boolean status; // available/unavailable
 
     @ManyToOne (optional = true, cascade = CascadeType.ALL)
@@ -42,7 +42,9 @@ public class Appointment {
     private Long client_id;
 
 
-    public Date getDate_time() { return date_time; }
+    public String getDate() { return date; }
+
+    public String getTime() { return time; }
 
     public Boolean getStatus() { return status; }
 
@@ -59,7 +61,9 @@ public class Appointment {
     public Long getClient_id() { return client_id; }
 
 
-    public void setDate_time(Date date_time) { this.date_time = date_time; }
+    public void setDate(String date) { this.date = date; }
+
+    public void setTime(String time) { this.time = time; }
 
     public void setStatus(Boolean status) { this.status = status; }
 
