@@ -53,6 +53,15 @@ public class CategoryController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping(value = "/category/name/{name}")
+    public ResponseEntity<Long> findByName(@PathVariable(name="name") String name){
+        final Long category_id = categoryService.findByName(name);
+
+        return category_id != null
+                ? new ResponseEntity<>(category_id, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
     @DeleteMapping(value = "/category/{id}")
     public ResponseEntity<?> deleteById(@PathVariable(name="id") Long id){
         categoryService.delete(id);

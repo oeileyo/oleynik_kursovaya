@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Category;
 import com.example.demo.entity.Employee;
 import com.example.demo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,15 @@ public class EmployeeController {
 
         return employee != null
                 ? new ResponseEntity<>(employee, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping(value = "/employees/name/{name}")
+    public ResponseEntity<Long> findByName(@PathVariable(name="name") String name){
+        final Long employee_id = employeeService.findByName(name);
+
+        return employee_id != null
+                ? new ResponseEntity<>(employee_id, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 

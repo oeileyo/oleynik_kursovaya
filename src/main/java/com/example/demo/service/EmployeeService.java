@@ -47,5 +47,18 @@ public class EmployeeService {
         return employeeRepository.findById(id);
     }
 
+    public Long findByName(String name){
+        String[] words = name.split("_");
+        String first_name = words[0];
+        String last_name = words[1];
+        List<Employee> employeeList = findAll();
+        for (Employee employee : employeeList){
+            if (employee.getFirst_name().equals(first_name)  && employee.getLast_name().equals(last_name) ){
+                return employee.getId();
+            }
+        }
+        return null;
+    }
+
     public void delete(Long id){ employeeRepository.deleteById(id); }
 }

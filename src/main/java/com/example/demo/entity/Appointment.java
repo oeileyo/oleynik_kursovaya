@@ -18,23 +18,22 @@ public class Appointment {
 
     private String date;
     private String time;
-    private Boolean status; // available/unavailable
 
-    @ManyToOne (optional = true, cascade = CascadeType.ALL)
+    @ManyToOne (optional = false, cascade = CascadeType.ALL)
     @JoinColumn (name = "category_id")
     @JsonIgnore
     private Category category;
     @Column(insertable = false, updatable = false)
     private Long category_id;
 
-    @ManyToOne (optional = true, cascade = CascadeType.ALL)
+    @ManyToOne (optional = false, cascade = CascadeType.ALL)
     @JoinColumn (name = "employee_id")
     @JsonIgnore
     private Employee employee;
     @Column(insertable = false, updatable = false)
     private Long employee_id;
 
-    @ManyToOne (optional=true, cascade=CascadeType.ALL)
+    @ManyToOne (optional=false, cascade=CascadeType.ALL)
     @JoinColumn (name="client_id")
     @JsonIgnore
     private Client client;
@@ -45,8 +44,6 @@ public class Appointment {
     public String getDate() { return date; }
 
     public String getTime() { return time; }
-
-    public Boolean getStatus() { return status; }
 
     public Category getCategory() { return category; }
 
@@ -64,8 +61,6 @@ public class Appointment {
     public void setDate(String date) { this.date = date; }
 
     public void setTime(String time) { this.time = time; }
-
-    public void setStatus(Boolean status) { this.status = status; }
 
     public void setCategory(Category category) { this.category = category; }
 

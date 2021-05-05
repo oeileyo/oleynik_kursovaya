@@ -2,7 +2,12 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Appointment;
 import com.example.demo.entity.Category;
+import com.example.demo.entity.Client;
+import com.example.demo.entity.Employee;
 import com.example.demo.repository.AppointmentRepository;
+import com.example.demo.repository.CategoryRepository;
+import com.example.demo.repository.ClientRepository;
+import com.example.demo.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +18,20 @@ import java.util.Optional;
 public class AppointmentService {
     @Autowired
     private AppointmentRepository appointmentRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
+    @Autowired
+    private ClientRepository clientRepository;
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     public void create(Appointment appointment){
+        Category category = categoryRepository.findById(appointment.getCategory_id()).orElseThrow();
+        appointment.setCategory(category);
+        Client client = clientRepository.findById(appointment.getClient_id()).orElseThrow();
+        appointment.setClient(client);
+        Employee employee = employeeRepository.findById(appointment.getEmployee_id()).orElseThrow();
+        appointment.setEmployee(employee);
         appointmentRepository.save(appointment);
     }
 
@@ -38,9 +55,6 @@ public class AppointmentService {
 
             _updatedAppointment.setClient(appointment.getClient() != null
                     ? appointment.getClient() : _updatedAppointment.getClient());
-
-            _updatedAppointment.setStatus(appointment.getStatus() != null
-                    ? appointment.getStatus() : _updatedAppointment.getStatus());
 
             appointmentRepository.save(_updatedAppointment);
         }
