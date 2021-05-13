@@ -7,11 +7,13 @@ import net.minidev.json.annotate.JsonIgnore;
 import javax.persistence.*;
 import java.util.List;
 
+/* Entity class for table categories */
 @Entity
 @Data
 @NoArgsConstructor
 @Table(name = "categories")
 public class Category {
+    /* Parameters and joins */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,13 +26,14 @@ public class Category {
     private List<Appointment> appointmentList;
 
 
+    /* Getters */
     public String getName() { return name; }
 
     public Integer getPrice() { return price; }
 
     public List<Appointment> getAppointmentList() { return appointmentList; }
 
-
+    /* Setters */
     public void setName(String name) { this.name = name; }
 
     public void setPrice(Integer price) { this.price = price; }

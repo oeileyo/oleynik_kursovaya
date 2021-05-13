@@ -4,14 +4,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
+/* Entity class for table appointments */
 @Entity
 @Data
 @NoArgsConstructor
 @Table(name = "appointments")
 public class Appointment {
+    /* Parameters and joins */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -40,7 +40,7 @@ public class Appointment {
     @Column(insertable = false, updatable = false)
     private Long client_id;
 
-
+    /* Getters */
     public String getDate() { return date; }
 
     public String getTime() { return time; }
@@ -57,7 +57,7 @@ public class Appointment {
 
     public Long getClient_id() { return client_id; }
 
-
+    /* Setters */
     public void setDate(String date) { this.date = date; }
 
     public void setTime(String time) { this.time = time; }

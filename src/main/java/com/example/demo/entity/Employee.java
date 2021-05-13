@@ -7,11 +7,13 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
+/* Entity class for table employees */
 @Entity
 @Data
 @NoArgsConstructor
 @Table(name = "employees")
 public class Employee {
+    /* Parameters and joins */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,6 +25,7 @@ public class Employee {
     @JsonIgnore
     private List<Appointment> appointmentList;
 
+    /* Getters */
     public Long getId() {return id;};
 
     public String getFirst_name() {
@@ -37,6 +40,7 @@ public class Employee {
         return appointmentList;
     }
 
+    /* Setters */
     public void setFirst_name(String first_name) {
         this.first_name = first_name;
     }

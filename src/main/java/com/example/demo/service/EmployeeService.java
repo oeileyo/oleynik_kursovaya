@@ -8,45 +8,50 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/* Employee Service */
 @Service
 public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    /* Employee creation method */
     public void create(Employee employee){
         employeeRepository.save(employee);
     }
 
+    /* Employee update method */
+    public List<Employee> update(Employee employee) {
+        var updatedEmployee = employeeRepository.findById(employee.getId());
 
-  public List<Employee> update(Employee employee) {
-      var updatedEmployee = employeeRepository.findById(employee.getId());
+        if (updatedEmployee.isPresent()) {
+            var _updatedEmployee = updatedEmployee.get();
 
-      if (updatedEmployee.isPresent()) {
-          var _updatedEmployee = updatedEmployee.get();
-
-          _updatedEmployee.setFirst_name(employee.getFirst_name() != null
+            _updatedEmployee.setFirst_name(employee.getFirst_name() != null
                   ? employee.getFirst_name() : _updatedEmployee.getFirst_name());
 
-          _updatedEmployee.setLast_name(employee.getLast_name() != null
+            _updatedEmployee.setLast_name(employee.getLast_name() != null
                   ? employee.getLast_name() : _updatedEmployee.getLast_name());
 
-          _updatedEmployee.setAppointmentList(employee.getAppointmentList() != null
+            _updatedEmployee.setAppointmentList(employee.getAppointmentList() != null
                   ? employee.getAppointmentList() : _updatedEmployee.getAppointmentList());
 
-          employeeRepository.save(_updatedEmployee);
+            employeeRepository.save(_updatedEmployee);
+            }
+
+        return employeeRepository.findAll();
       }
 
-      return employeeRepository.findAll();
-  }
-
+    /* Find all employees method */
     public List<Employee> findAll(){
         return employeeRepository.findAll();
     }
 
+    /* Find employee by id method */
     public Optional<Employee> find(Long id){
         return employeeRepository.findById(id);
     }
 
+    /* Find employee by name method */
     public Long findByName(String name){
         String[] words = name.split("_");
         String first_name = words[0];
@@ -60,5 +65,6 @@ public class EmployeeService {
         return null;
     }
 
+    /* Delete employee by id method */
     public void delete(Long id){ employeeRepository.deleteById(id); }
 }
