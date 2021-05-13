@@ -9,25 +9,38 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-/* Rest controller for categories */
+/**
+ *  Rest controller for categories
+ */
 @RestController
 public class CategoryController {
     private CategoryService categoryService;
 
-    /* Constructor */
+    /**
+     *  Constructor
+     * @param categoryService сервис
+     */
     @Autowired
     public CategoryController(CategoryService categoryService){
         this.categoryService = categoryService;
     }
 
-    /* Post request (create category) */
+    /**
+     *  Post request (create category)
+     * @param category категория
+     * @return HttpStatus
+     */
     @PostMapping(value = "/category")
     public ResponseEntity<?> create(@RequestBody Category category){
         categoryService.create(category);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    /* Put request (update category) */
+    /**
+     *  Put request (update category)
+     * @param category категория
+     * @return HttpStatus
+     */
     @PutMapping("/category/{id}")
     public ResponseEntity<List<Category>> update(@RequestBody Category category) {
         final List<Category> categoryList = categoryService.update(category);
@@ -35,7 +48,10 @@ public class CategoryController {
         return new ResponseEntity<>(categoryList, HttpStatus.OK);
     }
 
-    /* Get request (find all categories) */
+    /**
+     *  Get request (find all categories)
+     * @return HttpStatus
+     */
     @GetMapping(value = "/category")
     public ResponseEntity<List<Category>> findAll(){
         final List<Category> categoryList = categoryService.findAll();
@@ -45,7 +61,11 @@ public class CategoryController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    /* Get request (find category by id) */
+    /**
+     *  Get request (find category by id)
+     * @param id ID категории
+     * @return HttpStatus
+     */
     @GetMapping(value = "/category/{id}")
     public ResponseEntity<Optional<Category>> find(@PathVariable(name="id") Long id){
         final Optional<Category> category = categoryService.find(id);
@@ -55,7 +75,11 @@ public class CategoryController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    /* Get request (find category by name) */
+    /**
+     *  Get request (find category by name)
+     * @param name имя категории
+     * @return HttpStatus
+     */
     @GetMapping(value = "/category/name/{name}")
     public ResponseEntity<Long> findByName(@PathVariable(name="name") String name){
         final Long category_id = categoryService.findByName(name);
@@ -65,7 +89,11 @@ public class CategoryController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    /* Delete request (delete category by id) */
+    /**
+     *  Delete request (delete category by id)
+     * @param id ID категории
+     * @return HttpStatus
+     */
     @DeleteMapping(value = "/category/{id}")
     public ResponseEntity<?> deleteById(@PathVariable(name="id") Long id){
         categoryService.delete(id);

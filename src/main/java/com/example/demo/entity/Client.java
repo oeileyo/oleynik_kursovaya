@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
-/* Entity class for table clients */
+/**
+ *  Entity class for table clients
+ */
 @Entity
 @Data
 @NoArgsConstructor

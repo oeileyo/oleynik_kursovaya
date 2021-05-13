@@ -5,7 +5,9 @@ import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
-/* Entity class for table appointments */
+/**
+ *  Entity class for table appointments
+ */
 @Entity
 @Data
 @NoArgsConstructor

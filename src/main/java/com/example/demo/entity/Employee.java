@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
-/* Entity class for table employees */
+/**
+ *  Entity class for table employees
+ */
 @Entity
 @Data
 @NoArgsConstructor

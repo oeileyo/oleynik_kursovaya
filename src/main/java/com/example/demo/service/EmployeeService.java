@@ -8,18 +8,27 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-/* Employee Service */
+/**
+ *  Employee Service
+ */
 @Service
 public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    /* Employee creation method */
+    /**
+     *  Employee creation method
+     * @param employee новый сотрудник
+     */
     public void create(Employee employee){
         employeeRepository.save(employee);
     }
 
-    /* Employee update method */
+    /**
+     *  Employee update method
+     * @param employee новые данные сотрудника
+     * @return список всех сотрудников
+     */
     public List<Employee> update(Employee employee) {
         var updatedEmployee = employeeRepository.findById(employee.getId());
 
@@ -41,17 +50,28 @@ public class EmployeeService {
         return employeeRepository.findAll();
       }
 
-    /* Find all employees method */
+    /**
+     *  Find all employees method
+     * @return список всех сотрудников
+     */
     public List<Employee> findAll(){
         return employeeRepository.findAll();
     }
 
-    /* Find employee by id method */
+    /**
+     *  Find employee by id method
+     * @param id ID сотрудника
+     * @return сотрудник
+     */
     public Optional<Employee> find(Long id){
         return employeeRepository.findById(id);
     }
 
-    /* Find employee by name method */
+    /**
+     *  Find employee by name method
+     * @param name имя и фамилия сотрудника
+     * @return сотрудник
+     */
     public Long findByName(String name){
         String[] words = name.split("_");
         String first_name = words[0];
@@ -65,6 +85,9 @@ public class EmployeeService {
         return null;
     }
 
-    /* Delete employee by id method */
+    /**
+     *  Delete employee by id method
+     * @param id ID сотрудника
+     */
     public void delete(Long id){ employeeRepository.deleteById(id); }
 }

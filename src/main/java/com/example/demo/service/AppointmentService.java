@@ -14,7 +14,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-/* Appointment Service */
+/**
+ *  Appointment Service
+ */
 @Service
 public class AppointmentService {
     @Autowired
@@ -26,7 +28,10 @@ public class AppointmentService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    /* Appointment creation method */
+    /**
+     *  Appointment creation method
+     * @param appointment запись
+     */
     public void create(Appointment appointment){
         Category category = categoryRepository.findById(appointment.getCategory_id()).orElseThrow();
         appointment.setCategory(category);
@@ -37,7 +42,11 @@ public class AppointmentService {
         appointmentRepository.save(appointment);
     }
 
-    /* Appointment update method */
+    /**
+     *  Appointment update method
+     * @param appointment новые данные записи
+     * @return список всех записей
+     */
     public List<Appointment> update(Appointment appointment) {
         var updatedAppointment = appointmentRepository.findById(appointment.getId());
 
@@ -65,14 +74,24 @@ public class AppointmentService {
         return appointmentRepository.findAll();
     }
 
-    /* Find all appointments method */
+    /**
+     *  Find all appointments method
+     * @return список всех записей
+     */
     public List<Appointment> findAll(){
         return appointmentRepository.findAll();
     }
 
-    /* Find appointment by id method */
+    /**
+     *  Find appointment by id method
+     * @param id ID записи
+     * @return запись
+     */
     public Optional<Appointment> find(Long id){ return appointmentRepository.findById(id); }
 
-    /* Delete appointment by id method */
+    /**
+     *  Delete appointment by id method
+     * @param id ID записи
+     */
     public void delete(Long id){ appointmentRepository.deleteById(id); }
 }

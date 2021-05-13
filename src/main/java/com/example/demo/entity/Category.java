@@ -7,7 +7,9 @@ import net.minidev.json.annotate.JsonIgnore;
 import javax.persistence.*;
 import java.util.List;
 
-/* Entity class for table categories */
+/**
+ *  Entity class for table categories
+ */
 @Entity
 @Data
 @NoArgsConstructor
