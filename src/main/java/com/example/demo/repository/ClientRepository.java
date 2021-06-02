@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 /** Client Repository */
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long> {
-
-
+    Boolean existsById(Integer id);
+    Boolean existsByName(String name);
 }

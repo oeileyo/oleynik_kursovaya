@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 /** Employee Repository */
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+    Boolean existsByName(String name);
+    Boolean existsById(Integer id);
 }

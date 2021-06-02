@@ -23,6 +23,10 @@ public class Employee {
     private String first_name;
     private String last_name;
 
+    public Employee(String first_name) {
+        this.first_name = first_name;
+    }
+
     @OneToMany (mappedBy="employee", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Appointment> appointmentList;

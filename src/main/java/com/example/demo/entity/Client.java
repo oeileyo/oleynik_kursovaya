@@ -22,6 +22,10 @@ public class Client {
     private String name;
     private String phone;
 
+    public Client(String name) {
+        this.name = name;
+    }
+
     @OneToMany (mappedBy="client", cascade = CascadeType.ALL)
     private List<Appointment> appointmentList;
 

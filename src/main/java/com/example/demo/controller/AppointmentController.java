@@ -80,7 +80,7 @@ public class AppointmentController {
      * @param id ID записи
      * @return HttpStatus
      */
-    @DeleteMapping(value = "/appointment")
+    @DeleteMapping(value = "/appointment/{id}")
     public ResponseEntity<?> deleteById(@PathVariable(name="id") Long id){
         appointmentService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);

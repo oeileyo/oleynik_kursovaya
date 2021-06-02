@@ -21,6 +21,11 @@ public class Appointment {
     private String date;
     private String time;
 
+    public Appointment(String date, String time) {
+        this.date = date;
+        this.time = time;
+    }
+
     @ManyToOne (optional = false, cascade = CascadeType.ALL)
     @JoinColumn (name = "category_id")
     @JsonIgnore

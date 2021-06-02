@@ -23,6 +23,10 @@ public class Category {
     private String name;
     private Integer price;
 
+    public Category(String name) {
+        this.name = name;
+    }
+
     @OneToMany (mappedBy="category", cascade = CascadeType.PERSIST)
     @JsonIgnore
     private List<Appointment> appointmentList;
